@@ -177,6 +177,16 @@ cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=clie
 
 ```
 
+## create directories for the etcd data and etcd certificates
+
+```
+sudo mkdir -p /var/lib/etcd /var/lib/etcd/ssl
+```
+
+- copy and paste the previous certificates under /var/lib/etcd/ssl (server.pem , server-key.pem , peer.pem peer-key.pem, ca.pem)
+
+## create etcd service (/etc/systemd/system/etcd.service)
+
 ```
 [Unit]
 Description=etcd service
@@ -207,4 +217,13 @@ RestartSec=5
 [Install]
 WantedBy=multi-user.target
 
+```
+
+## reload the daemon and start the service
+
+```
+{
+    sudo systemctl daemon-reload
+    sudo systemctl start etcd.service
+}
 ```
