@@ -95,7 +95,6 @@ cfssl gencert -initca ca-csr.json | cfssljson -bare ca
 
 ```
 
-
 ## create server, peer and client certificates
 
 ```
@@ -177,6 +176,8 @@ cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=clie
 }
 
 ```
+
+```
 [Unit]
 Description=etcd service
 Documentation=https://github.com/coreos/etcd
@@ -207,4 +208,3 @@ RestartSec=5
 WantedBy=multi-user.target
 
 ```
-
